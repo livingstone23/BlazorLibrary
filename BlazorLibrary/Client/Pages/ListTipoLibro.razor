@@ -1,0 +1,47 @@
+﻿@page "/listtipolibro"
+@using MiPrimeraAplicacionUsandoBlazor.Shared.Models
+@inject HttpClient http
+
+<h3>ListTipoLibro</h3>
+
+@if (ListaTipoLibro == null)
+{
+	<h1>Cargando informacion .......</h1>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (TipoLibroCLS reg in ListaTipoLibro)
+			{
+				<tr>
+					<td>@reg.IIDTIPOLIBRO</td>
+					<td>@reg.NOMBRETIPOLIBRO</td>
+					<td>@reg.DESCRIPCIONTIPOLIBRO</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+
+	private List<TipoLibroCLS> ListaTipoLibro;
+
+	protected override async Task OnInitializedAsync()
+	{
+		ListaTipoLibro = await http.GetFromJsonAsync<List<TipoLibroCLS>>("api/TipoLibro/Get");
+
+
+
+	}
+
+
+}
