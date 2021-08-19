@@ -1,0 +1,51 @@
+﻿@using BlazorLibrary.Shared.Models
+
+
+<table class="table">
+	<thead>
+		<th>Dia de Semana</th>
+		<th>Tarea</th>
+		<th>Se realizo o no</th>
+		<th>Fecha a realizar la tarea</th>
+	</thead>
+	<tbody>
+		@foreach (TareaCLS reg in listaTarea)
+		{
+			<tr>
+				<td>@reg.diaSemana</td>
+				<td>@reg.tarea</td>
+				<td>@reg.chkRealizar</td>
+				<td>@reg.fechaTarea</td>
+				<td>
+					<input type="button" class="btn btn-danger" value="Eliminar"
+						   @onclick="@(()=>Eliminar(reg.tarea))"
+						   
+						   />
+				</td>
+			</tr>
+			
+		}
+	</tbody>
+</table>
+
+@code {
+
+
+
+	[Parameter]
+	public List<TareaCLS> listaTarea {get;set;}
+
+	public string nombreTarea { get; set; }
+
+	[Parameter]
+	public EventCallback<string> onclickEliminar { get; set; }
+
+	public void Eliminar(string data)
+	{
+		nombreTarea = data;
+		onclickEliminar.InvokeAsync(data);
+	}
+
+
+
+}

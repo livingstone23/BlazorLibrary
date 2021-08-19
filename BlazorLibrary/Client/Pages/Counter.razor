@@ -6,6 +6,8 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<Cursos cursos=@OtrosLenguajes />
+
 @code {
     private int currentCount = 0;
 
@@ -13,4 +15,6 @@
     {
         currentCount++;
     }
+
+    string[] OtrosLenguajes = { "Go", "Xamarin", "Phyton", "SQl Server", "Api Rest" };
 }

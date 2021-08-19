@@ -1,0 +1,80 @@
+﻿@page "/formulariolist"
+@using BlazorLibrary.Shared.Models
+
+<form @onsubmit="registrar">
+	<div class="form-group">
+		<label>Seleccione dia de la semana</label>
+		<select class="form-control" @bind="cboSemana">
+			<option value="">--Seleccione--</option>
+			<option value="Lunes">Lunes</option>
+			<option value="Martes">Martes</option>
+			<option value="Miercoles">Miercoles</option>
+			<option value="Jueves">JUeves</option>
+			<option value="Viernes">Viernes</option>
+			<option value="Sabado">Sabado</option>
+			<option value="Domingo">Domingo</option>
+		</select>
+
+	</div>
+
+	<div class="form-group">
+		<label>Ingrese Tarea</label>
+		<input type="text" class="form-control" required @bind="txtarea" />
+
+	</div>
+
+	<div>
+		<label>Se realizo o no lo tarea</label>
+		<input type="checkbox" @bind="chkRealizar" />
+	</div>
+
+	<div>
+		<label>Fecha Tarea</label>
+		<input type="date"  @bind="dtFechatarea" @bind:format="yyyy-MM-dd"    />
+	</div>
+
+	<input type="submit" value="Registrar" class="btn btn-primary" />
+</form>
+
+<ListTareas listaTarea=listaTarea  onclickEliminar=eliminarDatos/>
+
+
+
+
+
+@code {
+
+	public void eliminarDatos(string nombretarea)
+	{
+		foreach(TareaCLS reg in listaTarea)
+		{
+			if(reg.tarea== nombretarea)
+			{
+				listaTarea.Remove(reg);
+			}
+		}
+	}
+
+	public List<TareaCLS> listaTarea = new List<TareaCLS>();
+
+	public string cboSemana;
+
+	public string txtarea;
+
+	public bool chkRealizar;
+
+	public DateTime dtFechatarea=DateTime.Now;
+
+	public void registrar()
+	{
+		listaTarea.Add(new TareaCLS
+		{
+			diaSemana = cboSemana,
+			tarea = txtarea,
+			chkRealizar = chkRealizar,
+			fechaTarea= dtFechatarea
+		});
+
+	}
+
+}

@@ -1,0 +1,17 @@
+﻿@page "/cursos"
+
+<h3>Cursos</h3>
+
+<ul>
+	@foreach (string el in cursos)
+	{
+		<li>@el </li>
+	}
+</ul>
+
+@code {
+
+	[Parameter]
+	public string[] cursos { get; set; } = {"c sharp", "visual basic", "Visual foxpro"};
+
+}
