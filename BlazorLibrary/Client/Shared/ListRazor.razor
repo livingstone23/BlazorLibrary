@@ -1,5 +1,45 @@
-﻿<h3>ListRazor</h3>
+﻿@if(lista == null)
+{
+	<h1>...Cargando...</h1>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				@foreach(string cab in cabeceras)
+				{
+					<td>@cab</td>
+				}
+			</tr>
+		</thead>
 
-@code {
+		<tbody>
+			@foreach (object obj  in lista)
+			{
+				<tr>
+					@foreach(var propiedad in obj.GetType().GetProperties())
+					{
+						<td>@propiedad.GetValue(obj) </td>
+					}
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+
+
+
+
+@code 
+{
+
+	[Parameter]
+	public string[] cabeceras  { get; set; }
+
+	[Parameter]
+	public object[] lista  { get; set; }
+
 
 }

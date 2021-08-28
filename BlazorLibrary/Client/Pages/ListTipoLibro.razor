@@ -4,7 +4,7 @@
 
 <h3>ListTipoLibro</h3>
 
-@if (ListaTipoLibro == null)
+@*@if (ListaTipoLibro == null)
 {
 	<h1>Cargando informacion .......</h1>
 }
@@ -29,18 +29,22 @@ else
 			}
 		</tbody>
 	</table>
+}*@
+
+@{
+	string[] cabecerasTabla = { "Id Tipo Libro", "Nombre", "Descripcion" };
 }
+
+<ListRazor cabeceras=cabecerasTabla lista=ListaTipoLibro/>
 
 @code {
 
-	private List<TipoLibroCLS> ListaTipoLibro;
+
+	private TipoLibroCLS[] ListaTipoLibro;
 
 	protected override async Task OnInitializedAsync()
 	{
-		ListaTipoLibro = await http.GetFromJsonAsync<List<TipoLibroCLS>>("api/TipoLibro/Get");
-
-
-
+		ListaTipoLibro = await http.GetFromJsonAsync<TipoLibroCLS[]>("api/TipoLibro/Get");
 	}
 
 
