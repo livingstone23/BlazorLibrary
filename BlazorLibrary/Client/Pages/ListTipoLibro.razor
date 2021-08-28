@@ -35,7 +35,12 @@ else
 	string[] cabecerasTabla = { "Id Tipo Libro", "Nombre", "Descripcion" };
 }
 
-<ListRazor cabeceras=cabecerasTabla lista=ListaTipoLibro/>
+<ListRazor 
+		cabeceras=cabecerasTabla 
+		lista=ListaTipoLibro 
+		type="text"
+		label="Ingrese tipo libro"
+		eventBusqueda="BusquedaTipoLibro"/>
 
 @code {
 
@@ -47,5 +52,8 @@ else
 		ListaTipoLibro = await http.GetFromJsonAsync<TipoLibroCLS[]>("api/TipoLibro/Get");
 	}
 
-
+	public async  Task BusquedaTipoLibro(string data)
+	{
+		ListaTipoLibro = await http.GetFromJsonAsync<TipoLibroCLS[]>("api/TipoLibro/Filtrar/"+data);
+	}
 }

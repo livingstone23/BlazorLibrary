@@ -130,41 +130,41 @@ public class TipoLibroController : Controller
 
 
 
-    //[HttpGet]
-    //[Route("api/TipoLibro/Filtrar/{data?}")]
-    //public List<TipoLibroCLS> Filtrar(string data)
-    //{
-    //    List<TipoLibroCLS> lista = new List<TipoLibroCLS>();
-    //    using (BDBibliotecaContext db = new BDBibliotecaContext())
-    //    {
-    //        if (data == null)
-    //        {
-    //            lista = (from tipoLibro in db.TipoLibro
-    //                     where tipoLibro.Bhabilitado == 1
-    //                     select new TipoLibroCLS
-    //                     {
-    //                         IIDTIPOLIBRO = tipoLibro.Iidtipolibro,
-    //                         NOMBRETIPOLIBRO = tipoLibro.Nombretipolibro,
-    //                         DESCRIPCIONTIPOLIBRO = tipoLibro.Descripcion
-    //                     }).ToList();
-    //        }
-    //        else
-    //        {
-    //            lista = (from tipoLibro in db.TipoLibro
-    //                     where tipoLibro.Bhabilitado == 1
-    //                     && tipoLibro.Nombretipolibro.Contains(data)
-    //                     select new TipoLibroCLS
-    //                     {
-    //                         IIDTIPOLIBRO = tipoLibro.Iidtipolibro,
-    //                         NOMBRETIPOLIBRO = tipoLibro.Nombretipolibro,
-    //                         DESCRIPCIONTIPOLIBRO = tipoLibro.Descripcion
-    //                     }).ToList();
-    //        }
+    [HttpGet]
+    [Route("api/TipoLibro/Filtrar/{data?}")]
+    public List<TipoLibroCLS> Filtrar(string data)
+    {
+        List<TipoLibroCLS> lista = new List<TipoLibroCLS>();
+        using (BlazorLibraryContext db = new BlazorLibraryContext())
+        {
+            if (data == null)
+            {
+                lista = (from tipoLibro in db.TipoLibros
+                         where tipoLibro.Bhabilitado == 1
+                         select new TipoLibroCLS
+                         {
+                             IIDTIPOLIBRO = tipoLibro.Iidtipolibro,
+                             NOMBRETIPOLIBRO = tipoLibro.Nombretipolibro,
+                             DESCRIPCIONTIPOLIBRO = tipoLibro.Descripcion
+                         }).ToList();
+            }
+            else
+            {
+                lista = (from tipoLibro in db.TipoLibros
+                         where tipoLibro.Bhabilitado == 1
+                         && tipoLibro.Nombretipolibro.Contains(data)
+                         select new TipoLibroCLS
+                         {
+                             IIDTIPOLIBRO = tipoLibro.Iidtipolibro,
+                             NOMBRETIPOLIBRO = tipoLibro.Nombretipolibro,
+                             DESCRIPCIONTIPOLIBRO = tipoLibro.Descripcion
+                         }).ToList();
+            }
 
 
-    //    }
-    //    return lista;
-    //}
+        }
+        return lista;
+    }
 
 
 

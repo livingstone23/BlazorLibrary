@@ -4,6 +4,19 @@
 }
 else
 {
+	@if(type != "none")
+	{
+		<label>@label</label>
+		@if(type == "text")
+		{
+			<div class="mb-4">
+				<label>@label</label>
+				<input class="form-check form-control" type="text" @bind-value="valor" @bind-value:event="oninput" />
+				<button class="btn btn-primary" @onclick="Busqueda">Buscar</button>
+			</div>
+		}
+	}
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -29,17 +42,31 @@ else
 }
 
 
-
-
-
 @code 
 {
+
+
+	public string valor { get; set; }
 
 	[Parameter]
 	public string[] cabeceras  { get; set; }
 
 	[Parameter]
 	public object[] lista  { get; set; }
+
+	[Parameter]
+	public string type { get; set; } = "none";
+
+	[Parameter]
+	public string label { get; set; } = "";
+
+	[Parameter]
+	public EventCallback<string> eventBusqueda { get; set; }
+
+	public void Busqueda()
+	{
+		eventBusqueda.InvokeAsync(valor);
+	}
 
 
 }
