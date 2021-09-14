@@ -1,0 +1,24 @@
+﻿@using BlazorLibrary.Shared.Models
+@page "/listAutor"
+@inject HttpClient http
+
+@{
+	string[] cabeceras = { "Id Autor", "Nombre completo", "Pais", "Sexo", "Descripcion" };
+}
+
+<ListRazor 
+	cabeceras="cabeceras"
+	lista=listaAutor
+
+/>
+
+@code {
+
+	private AutorCLS[] listaAutor; 
+
+	protected override async Task OnInitializedAsync()
+	{
+		listaAutor = await http.GetFromJsonAsync<AutorCLS[]>("api/Autor/listarAutor");
+	}
+
+}

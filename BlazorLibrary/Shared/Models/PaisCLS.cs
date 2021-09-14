@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
+namespace BlazorLibrary.Shared.Models
 {
 	public class PaisCLS
 	{

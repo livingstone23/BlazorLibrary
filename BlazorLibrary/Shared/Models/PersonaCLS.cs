@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
+namespace BlazorLibrary.Shared.Models
 {
 	public class PersonaCLS
 	{

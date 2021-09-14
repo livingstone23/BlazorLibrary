@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
+namespace BlazorLibrary.Shared.Models
 {
 	public class AutorCLS
 	{
@@ -36,6 +36,7 @@ namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
 		public string nombrecompleto { get; set; }
 		public string nombresexo { get; set; }
 		public string nombrepais { get; set; }
+
 		[Required(ErrorMessage = "Debe ingresar la descripcion")]
 		[MaxLength(500,ErrorMessage ="La longitud maxima es 500")]
 		[MinLength(10, ErrorMessage = "La longitud minima es 10")]

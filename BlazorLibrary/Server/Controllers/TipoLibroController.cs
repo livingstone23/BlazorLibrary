@@ -1,6 +1,6 @@
 ﻿using BlazorLibrary.Server.Models;
 using Microsoft.AspNetCore.Mvc;
-using MiPrimeraAplicacionUsandoBlazor.Shared.Models;
+using BlazorLibrary.Shared.Models;
 
 namespace BlazorLibrary.Server.Controllers;
 

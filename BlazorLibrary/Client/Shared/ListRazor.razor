@@ -6,15 +6,30 @@ else
 {
 	@if(type != "none")
 	{
-		<label>@label</label>
+
 		@if(type == "text")
 		{
 			<label>@label</label>
-			<div class="mb-4" style="display:grid;grid-template-columns:8fr 1fr">
-				<input type="text" @bind-value="valor" class="form-check form-control" @bind-value:event="oninput" />
-				<button class="btn btn-primary" @onclick="Busqueda">Buscar</button>
-			</div>
-		}
+
+			@if(button == true)
+			{
+				<div class="mb-4" style="display:grid;grid-template-columns:8fr 1fr">
+					<input type="text" @bind-value="valor" class="form-check form-control" 
+						@bind-value:event="oninput" />
+					<button class="btn btn-primary" @onclick="Busqueda">Buscar</button>
+				</div>
+			}
+			else
+			{
+				<div class="mb-4" >
+					<input type="text" @bind-value="valor" class="form-check form-control" 
+						@bind-value:event="oninput" @onkeyup="Busqueda" />
+					
+				</div>
+
+			}
+		} 
+		
 	}
 
 	<table class="table">
@@ -30,7 +45,7 @@ else
 		<tbody>
 			@foreach (object obj  in lista)
 			{
-				<tr>
+				<tr role="row" class="odd">
 					@foreach(var propiedad in obj.GetType().GetProperties())
 					{
 						<td>@propiedad.GetValue(obj) </td>
@@ -59,6 +74,9 @@ else
 
 	[Parameter]
 	public string label { get; set; } = "";
+
+	[Parameter]
+	public bool button { get; set; } = true;
 
 	[Parameter]
 	public EventCallback<string> eventBusqueda { get; set; }

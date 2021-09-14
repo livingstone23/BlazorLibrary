@@ -1,5 +1,5 @@
 ﻿@page "/listtipolibro"
-@using MiPrimeraAplicacionUsandoBlazor.Shared.Models
+@using BlazorLibrary.Shared.Models
 @inject HttpClient http
 
 <h3>ListTipoLibro</h3>
@@ -40,7 +40,9 @@ else
 		lista=ListaTipoLibro 
 		type="text"
 		label="Ingrese tipo libro"
-		eventBusqueda="BusquedaTipoLibro"/>
+		eventBusqueda="BusquedaTipoLibro"
+		button=false
+		/>
 
 @code {
 

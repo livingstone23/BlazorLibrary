@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
+namespace BlazorLibrary.Shared.Models
 {
 	public class TipoLibroCLS
 	{

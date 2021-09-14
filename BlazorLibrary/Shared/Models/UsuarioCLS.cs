@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace MiPrimeraAplicacionUsandoBlazor.Shared.Models
+namespace BlazorLibrary.Shared.Models
 {
     public class UsuarioCLS
 	{
